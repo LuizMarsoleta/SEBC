@@ -203,7 +203,7 @@ Parcels are [CM-specific code blobs](https://github.com/cloudera/cm_ext/wiki/Par
 * For GCE, use `n1-highmen-2` nodes
   * Do not use preemptible instances
 * Make sure the AMI you choose is a Cloudera-supported OS
-  * These platforms are supported for [CM 5.9.0](http://www.cloudera.com/downloads/manager/5-9-0.html)
+  * These platforms are supported for [CM 5.12.0](https://www.cloudera.com/downloads/manager/5-12-0.html)
 * Use one instance to host Cloudera Manager server and edge/client-facing services
   * This includes Hue and Apache Oozie
 
