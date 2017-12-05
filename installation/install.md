@@ -293,7 +293,11 @@ or [here for MySQL](http://www.cloudera.com/documentation/enterprise/latest/topi
 
 [The full rundown is here](https://www.cloudera.com/documentation/enterprise/5-12-x/topics/cm_ig_install_path_b.html)
 
-Notice that you must configure the correct repo. The default is always the latest available version (5.10).
+Create MySQL JDBC connector folder <code>mkdir -p /usr/share/java/</code>, then copy the connector to the destination folder.
+
+[Schema Preparation for Cloudera Manager Server Database](https://www.cloudera.com/documentation/enterprise/5-12-x/topics/cm_ig_installing_configuring_dbs.html#concept_i2r_m3m_hn__example_fsj_cyp_bm)
+
+Notice that you must configure the correct repo. The default is always the latest available version (5.13).
 
 Ensure you adhere to the following requirements:
 
