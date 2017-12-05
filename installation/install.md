@@ -253,7 +253,7 @@ or [here for MySQL](http://www.cloudera.com/documentation/enterprise/latest/topi
     * Enable the repo to install MySQL 5.5
     * Install the <code>mysql</code> package on all nodes
     * Install <code>mysql-server</code> on the server and replica nodes
-    * Download and copy [the JDBC connector](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-binary-installation.html) to all nodes.
+    * Download and copy [the JDBC connector](https://dev.mysql.com/downloads/connector/j/) to all nodes.
 2. You should not need to build a <code>/etc/my.cnf</code> file to start your MySQL server
     * You will have to modify it to support replication. Check MySQL documentation.<p>
 3. Start the <code>mysqld</code> service.
@@ -265,16 +265,18 @@ or [here for MySQL](http://www.cloudera.com/documentation/enterprise/latest/topi
     e. Refresh privileges in memory<br>
     f. Refreshes the <code>mysqld</code> service<p>
 5. On the master MySQL node, grant replication privileges for your replica node:<br>
-    a. Log in with <code>mysql -u ... -p</code> <br>
-    b. Note the FQDN of your replica host.<br>
-    c. <code>mysql> **GRANT REPLICATION SLAVE ON \*.\* TO '*user*'@'*FQDN*' IDENTIFIED BY '*password*';**</code><br>
-    d. <code>mysql> **SET GLOBAL binlog_format = 'ROW';** </code><br>
-    e. <code>mysql> **FLUSH TABLES WITH READ LOCK;</code>**<p>
+	a. Modify the file <code>/etc/my.cnf</code> inserting the tag <code>server-id</code> in the beggining and set it's value to 1 <code>server-id = 1</code>.
+    b. Log in with <code>mysql -u ... -p</code> <br>
+    c. Note the FQDN of your replica host.<br>
+    d. <code>mysql> **GRANT REPLICATION SLAVE ON \*.\* TO '*user*'@'*FQDN*' IDENTIFIED BY '*password*';**</code><br>
+    e. <code>mysql> **SET GLOBAL binlog_format = 'ROW';** </code><br>
+    f. <code>mysql> **FLUSH TABLES WITH READ LOCK;</code>**<p>
 6. In a second terminal session, log into the MySQL master and show its  status:<br>
     a. <code>mysql> **SHOW MASTER STATUS;**</code><br>
     b. Make note of the file name and byte offset. The replica needs this info to sync to the master.<br>
     c. Logout of the second session; remove the lock on the first with <code>mysql> **UNLOCK TABLES;**</code><p>
 7. Login to the replica server and configure a connection to the master:<br>
+	Modify the file <code>/etc/my.cnf</code> inserting the tag <code>server-id</code> in the beggining and set it's value to 1 <code>server-id = 2</code>.	
     <code>mysql> **CHANGE MASTER TO**<br> **MASTER_HOST='*master host*',**<br> **MASTER_USER='*replica user*',**<br> **MASTER_PASSWORD='*replica password*',**<br> **MASTER_LOG_FILE='*master file name*',**<br> **MASTER_LOG_POS=*master file offset*;**</code><p>
 8. Initiate slave operations on the replica<br>
     a. <code>mysql> **START SLAVE;**</code><br>
