@@ -265,7 +265,7 @@ or [here for MySQL](http://www.cloudera.com/documentation/enterprise/latest/topi
     e. Refresh privileges in memory<br>
     f. Refreshes the <code>mysqld</code> service<p>
 5. On the master MySQL node, grant replication privileges for your replica node:<br>
-	a. Modify the file <code>/etc/my.cnf</code> inserting the tag <code>server-id</code> at the beginning and set its value to 1 <code>server-id = 1</code>.
+	a. Modify the file <code>/etc/my.cnf</code> inserting the tag <code>server-id</code> at the beginning and set its value to 1 <code>server-id = 1</code><br>
     b. Log in with <code>mysql -u ... -p</code> <br>
     c. Note the FQDN of your replica host.<br>
     d. <code>mysql> **GRANT REPLICATION SLAVE ON \*.\* TO '*user*'@'*FQDN*' IDENTIFIED BY '*password*';**</code><br>
@@ -276,7 +276,7 @@ or [here for MySQL](http://www.cloudera.com/documentation/enterprise/latest/topi
     b. Make note of the file name and byte offset. The replica needs this info to sync to the master.<br>
     c. Logout of the second session; remove the lock on the first with <code>mysql> **UNLOCK TABLES;**</code><p>
 7. Login to the replica server and configure a connection to the master:<br>
-	Modify the file <code>/etc/my.cnf</code> inserting the tag <code>server-id</code> at the beginning and set its value to 1 <code>server-id = 2</code>.	
+	Modify the file <code>/etc/my.cnf</code> inserting the tag <code>server-id</code> at the beginning and set its value to 2 <code>server-id = 2</code>.<br>
     <code>mysql> **CHANGE MASTER TO**<br> **MASTER_HOST='*master host*',**<br> **MASTER_USER='*replica user*',**<br> **MASTER_PASSWORD='*replica password*',**<br> **MASTER_LOG_FILE='*master file name*',**<br> **MASTER_LOG_POS=*master file offset*;**</code><p>
 8. Initiate slave operations on the replica<br>
     a. <code>mysql> **START SLAVE;**</code><br>
