@@ -76,7 +76,7 @@
 ## <center> <a name="cm_install_logging"/>Installation Steps with Path A []()
 
 * Exits if SELinux is enabled
-* Installs YUM repos for [CM packages:](http://archive.cloudera.com/cm5/redhat/5/x86_64/cm/5/RPMS/x86_64/)
+* Installs YUM repos for [CM packages:](http://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5/RPMS/x86_64/)
  * Cloudera-packaged PostgreSQL server
  * Oracle JDK 
     * Cloudera does not test/certify against OpenJDK
@@ -94,7 +94,7 @@
 
 * Review key hardware, OS, disk, and network/kernel settings
 * Install supported Oracle JDK
-* Install/configure [database server](https://www.cloudera.com/documentation/enterprise/5-9-x/topics/cm_ig_installing_configuring_dbs.html)
+* Install/configure [database server](https://www.cloudera.com/documentation/enterprise/5-12-x/topics/cm_ig_installing_configuring_dbs.html)
 * Create databases & grant CM/CDH services access to them
     * Accessing MySQL/MariaDB or Oracle requires a JDBC connector
 * CM will then
