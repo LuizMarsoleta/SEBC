@@ -276,14 +276,9 @@ _Use CM to answer the following questions. For some questions, search will help 
 ---
 <div style="page-break-after: always;"></div>
 
-## <center> CM Lab
-## <center> Upgrade Cloudera Manager
+## <center> CM Lab Bonus
+## <center> Install Spark 2
 
-* Upgrade to the latest **C5.12** release
-  * Use the [documentation here](http://www.cloudera.com/documentation/enterprise/latest/topics/cm_ag_ug_cm5.html)
-* Use the API on the command line to:
-  * Report the latest available version of the API
-  * Report the CM version 
-  * List all CM users
-  * Report the database server in use by CM
-* Add these API calls and their output to `enterprise/labs/4_API_upgrade_calls.md`
+* Install Spark 2 to the latest **2.2 Release 1** release
+  * Use the [documentation here](https://www.cloudera.com/documentation/spark2/latest/topics/spark2_installing.html)
+* Add these API calls and their output to `enterprise/labs/4_SPARK2_install.md`
